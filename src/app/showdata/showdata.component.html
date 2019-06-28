@@ -1,0 +1,99 @@
+<div class="container">
+	<h2>Data From the Database</h2>
+  <button type="button" class="btn btn-danger" name="delete hero"
+           (click)="deleteAllUser()">DELETE</button>
+           <span style="margin-left: 85%;"></span>
+
+           <button type="button" (click)="getUserById(o.id)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Update
+          </button>
+ <hr>
+<div style=" background-color: #F0EEEE;" class="w3-round w3-teal">
+    
+  <table class="table-striped  table-bordered ">
+  <thead></thead>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Author</th>
+    <th>PublishedDate</th>
+    <th>UpdatedDate</th> 
+     
+    </tr>
+  
+  <tbody>
+      <tr *ngFor="let o of newsdata">
+          <td>{{o.id}}</td>
+          <td>{{o.title}}</td>
+          <td>{{o.link}}</td>
+          <td>{{o.author}}</td>
+          <td>{{o.publishedDate}}</td>
+          <td>{{o.updatedDate}}</td>
+          <td> </td>
+     </tr>
+  </tbody>
+  
+    </table>
+    
+</div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!---->
+        <form #dataForm="ngForm" (ngSubmit)="updateUser(dataForm.value)">
+          <div class="form-group" >
+            <label>title:</label>
+            <input type="hidden" (ngModel)="news.id" value="{{data.id}}"  class="form-control" id="dataId">
+
+            <input type="text" (ngModel)="news.title" value="{{data.title}}" class="form-control"  id="title">
+
+            <label>link:</label>
+            <input type="text" (ngModel)="news.link" value="{{data.link}}" class="form-control" id="link">
+            </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+
+
+          <!---->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--  getUserById(id: number): Observable<any> {
+
+      return this.httpClient.get("http://localhost:8080/singleRssData/" + id).subscribe(data => {
+      this.data = data;
+
+      console.log("by this id",this.data);
+     console.log("by this id",this.data.link);
+    });
+    };
+
+    onSubmit(){
+
+    this.updateUser(this.news);
+    }
+   updateUser(news: News): Observable<News> {
+      alert("hi");
+      
+     news.id= document.getElementById("dataId").value;
+      console.log("ggg",news.id);
+      news.title = document.getElementById("title").value;
+      news.link = document.getElementById("link").value;
+      console.log(news);
+     return this.httpClient.put<News>("http://localhost:8080/update/" + news.id, news).subscribe(data => {
+      this.data = data;
+    });
+   } -->
