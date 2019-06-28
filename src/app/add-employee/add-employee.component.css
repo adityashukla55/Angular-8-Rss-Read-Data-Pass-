@@ -1,0 +1,25 @@
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css)
+@import url(https://www.w3schools.com/w3css/4/w3.css)
+
+
+/*.FeedInput{
+  border-radius: 10px;
+  background-color: white;
+  padding-left: 15px;
+  width: 80%;
+  border-style: solid;
+  border-color: #727983;
+  margin: 10px 0 10px 0;
+}
+#addFeedBtn{
+  background-color: #FF5722;
+  width:10%;
+  border-radius: 20px;
+  border: none;
+}*/
+#deleteFeed{
+  float: right;
+  background: transparent;
+  border: none;
+}
+

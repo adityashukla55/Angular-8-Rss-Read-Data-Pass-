@@ -1,0 +1,62 @@
+
+<div class="container" style="background-color: #EEF6F7; width:800px;">
+   <p class="text-center" style="font-size: 30px;">My Feeds</p>
+  
+  <div class="input-group mb-3 mt-2">
+
+    <input type="text"
+           class="form-control"
+      [(ngModel)]="newFeed"
+           placeholder="https://example.com/rss/">
+    <div class="input-group-append">
+      <button class="btn btn-success"
+        [ngClass]="{'progress-bar-striped': loading, 'progress-bar-animated':loading}"
+              type="button"
+        (click)="add()"
+        [disabled]="!newFeed">+ Add
+      </button>
+    </div>
+
+    <table class="table" >
+    
+      <tr *ngFor="let o of udata">
+            <td>
+        <button style="width: 150px;" type="button" class="btn btn-light btn-lg"><a [routerLink]="['/add-employees', o.link]">{{o.title}}</a><span></span></button>{{o.link}} 
+               </td>
+     </tr>
+  </table>
+  </div>
+
+  <table class="table" *ngIf="feeds.length">
+    <tbody>
+
+
+   
+    <tr *ngFor="let feed of feeds">
+      <td class="pl-0 feed-link">
+        <a [routerLink]="['/add-employees', feed]">{{feed}}</a>
+      </td>
+      <td class="pr-0">
+        <button class="close" (click)="removeFeed(feed)">&times;</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="error" class="text-danger">💢 {{error}}</div>
+ 
+<!-- <div style="background-color:#EEF6F7; width:700px;">
+  <h4>Settings</h4>
+  <h6>CORS proxy</h6>
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="cors" (ngModelChange)="setCors($event)">
+      <option *ngFor="let proxy of CORSList"
+        [ngValue]="proxy.key">{{proxy.url}}
+      </option>
+    </select>
+  </div>
+
+
+</div> -->
+
+
+</div>
